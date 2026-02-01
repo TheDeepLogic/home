@@ -1,0 +1,315 @@
+/* Retro Computing Theme - Vintage CRT Monitor Aesthetic */
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-green: #00ff00;
+    --secondary-green: #00cc00;
+    --dark-bg: #0a0a0a;
+    --darker-bg: #000000;
+    --amber: #ff9900;
+    --text-glow: #00ff00;
+    --screen-glow: rgba(0, 255, 0, 0.1);
+}
+
+body {
+    font-family: 'VT323', monospace;
+    background: var(--darker-bg);
+    color: var(--primary-green);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* CRT Scanline Effect */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 9999;
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+    0% { opacity: 0.97; }
+    50% { opacity: 1; }
+    100% { opacity: 0.98; }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: radial-gradient(ellipse at center, var(--dark-bg) 0%, var(--darker-bg) 100%);
+    box-shadow: inset 0 0 100px rgba(0, 255, 0, 0.05);
+    position: relative;
+}
+
+/* Header Styles */
+header {
+    border: 2px solid var(--primary-green);
+    padding: 20px;
+    margin-bottom: 40px;
+    background: rgba(0, 255, 0, 0.02);
+    box-shadow: 
+        0 0 10px var(--text-glow),
+        inset 0 0 10px rgba(0, 255, 0, 0.1);
+}
+
+.terminal-header {
+    text-align: center;
+}
+
+.ascii-art {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--primary-green);
+    text-shadow: 0 0 5px var(--text-glow);
+    overflow-x: auto;
+    white-space: pre;
+}
+
+.tagline {
+    font-size: 24px;
+    margin-top: 10px;
+    color: var(--amber);
+    text-shadow: 0 0 8px var(--amber);
+    letter-spacing: 4px;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0.7; }
+}
+
+/* Section Styles */
+section {
+    margin-bottom: 60px;
+}
+
+h2 {
+    font-size: 36px;
+    color: var(--amber);
+    text-shadow: 0 0 10px var(--amber);
+    margin-bottom: 25px;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--primary-green);
+    letter-spacing: 3px;
+}
+
+h3 {
+    font-size: 28px;
+    color: var(--primary-green);
+    text-shadow: 0 0 5px var(--text-glow);
+    margin-bottom: 15px;
+}
+
+.prompt {
+    color: var(--amber);
+    text-shadow: 0 0 5px var(--amber);
+}
+
+/* Terminal Text */
+.terminal-text {
+    font-size: 20px;
+    line-height: 1.8;
+    letter-spacing: 1px;
+}
+
+.terminal-text p {
+    margin-bottom: 15px;
+}
+
+/* About Section */
+.about {
+    border: 1px solid var(--primary-green);
+    padding: 30px;
+    background: rgba(0, 255, 0, 0.02);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+}
+
+/* Project Cards */
+.project-card {
+    border: 2px solid var(--primary-green);
+    margin-bottom: 40px;
+    background: rgba(0, 20, 0, 0.8);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.15);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+    transform: translateY(-5px);
+    border-color: var(--amber);
+}
+
+.project-banner {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background: var(--darker-bg);
+    border-bottom: 2px solid var(--primary-green);
+}
+
+.project-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(1.1) brightness(0.95);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-banner img {
+    transform: scale(1.05);
+    filter: contrast(1.2) brightness(1.05) hue-rotate(-10deg);
+}
+
+.project-content {
+    padding: 25px;
+}
+
+.project-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.project-link {
+    display: inline-block;
+    color: var(--amber);
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px;
+    border: 2px solid var(--amber);
+    background: rgba(255, 153, 0, 0.1);
+    text-shadow: 0 0 5px var(--amber);
+    transition: all 0.3s ease;
+    letter-spacing: 2px;
+}
+
+.project-link:hover {
+    background: rgba(255, 153, 0, 0.2);
+    box-shadow: 0 0 15px var(--amber);
+    transform: translateX(5px);
+}
+
+/* Footer */
+footer {
+    border-top: 2px solid var(--primary-green);
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 60px;
+}
+
+footer a {
+    color: var(--primary-green);
+    text-decoration: none;
+    text-shadow: 0 0 5px var(--text-glow);
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--amber);
+    text-shadow: 0 0 8px var(--amber);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ascii-art {
+        font-size: 6px;
+    }
+
+    .tagline {
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+
+    .terminal-text {
+        font-size: 18px;
+    }
+
+    .project-content p {
+        font-size: 16px;
+    }
+
+    .project-banner {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    header {
+        padding: 15px;
+    }
+
+    .about {
+        padding: 20px;
+    }
+
+    .project-content {
+        padding: 20px;
+    }
+
+    .ascii-art {
+        font-size: 5px;
+    }
+
+    .tagline {
+        font-size: 14px;
+    }
+}
+
+/* Additional retro effects */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+    pointer-events: none;
+}
+
+/* Cursor blink effect for READY prompt */
+footer .terminal-text p:first-child::after {
+    content: '█';
+    animation: cursor-blink 1s infinite;
+}
+
+@keyframes cursor-blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
